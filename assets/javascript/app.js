@@ -21,10 +21,13 @@ function queryGiffs() {
     });
 };
 
-movie = $("movie-input").val().trim();
+
 //movies = $(this).attr("movie-name");
 
 function queryMovies() {
+
+    movie = $("movie-input").val().trim();
+
     var queryOMDB = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy&limit=5";
 
     $.ajax({
@@ -47,8 +50,9 @@ function queryMovies() {
         queryMovies();
         queryGiffs();
     });
+};
 
- //
+//
 
         //renderButtons();
     //find-content
