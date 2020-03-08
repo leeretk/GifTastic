@@ -3,9 +3,12 @@ var categories = [
     "icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",
 ];
 
+var categoriesLength = categories.length;
+
 function queryApis() {
 
-    category = $("#category-input").val();
+    category = $("#category-input").val().trim();
+    categories = $(this).attr("category-name");
 
     var queryOMDB = "https://www.omdbapi.com/?t=" + category + "&apikey=trilogy";
 
@@ -14,37 +17,38 @@ function queryApis() {
     $.ajax({
         url: queryOMDB,
         // data: {
-
-        // },
+        //     title, 
+        //     poster,
+        //     rating,
+        //     },
         method: "GET"
     }).then(function (response) {
-        console.log(response.Runtime);
-        console.log(response.poster);
-        console.log(response.rated);
-        $("#omdb-view").text(JSON.stringify(response.data));
+        console.log("Title: " + response.title);
+        console.log("Runtime: " + response.Runtime);
+        console.log("Poster: " + response.poster);
+        console.log("Rating: " + response.rating);
+        $("#omdb-view").text(JSON.stringify(response));
     });
 
     $.ajax({
         url: queryGIPHY,
         method: "GET"
     }).then(function (response) {
-        console.log(response.rating);
-        console.log(response.slug);
-        $("#giphy-view").text(JSON.stringify(response.poster))
+        console.log(response.data);
+        $("#giphy-view").text(JSON.stringify(response))
     });
 };
 
-
 $("#find-content").on("click", function (event) {
             event.preventDefault();
-            categories = $(this).attr("category-name");
+            
             queryApis();
-        });
-
-
-
+            console.log(categories);
 });
-
+ 
+ 
+ 
+        //renderButtons();
     //find-content
     //category-form
     //category-input
@@ -66,13 +70,7 @@ $("#find-content").on("click", function (event) {
 
     //   // This function handles events where one button is clicked
 
-    //     $("#add-category").on("click", function(event) {
-    //         event.preventDefault();
-    //         var newContent = $("#category-input").val().trim();
-    //         content.push(newContent);
-    //         console.log(categories);
-    //         renderButtons();
-    //     });
+    //     
     //response.data
 
     //   // Function for displaying the movie info

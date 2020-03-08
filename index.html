@@ -16,18 +16,19 @@
 
             <!-- This form will be where users input data about the contents -->
 
-            <form id="content-form">
-                <label for="content-input">Search for a Content</label>
-                <input type="text" id="content-input"><br>
+            <form id="category-form">
+                <label for="category-input">Search for a Content</label>
+                <input type="text" id="category-input"><br>
 
                 <!-- This button will trigger our AJAX call -->
-                <input id="find-content" type="submit" value="Content Search">
+                <input id="find-content" type="submit" value="Category Search">
+                <div id="add-category"></div>
             </form>
 
             <!-- We'll be dumping our JSON contents in here -->
 
-            <div id="giphy-categories-view"></div>
-            <div id="omdb-categories-view"></div>
+            <div id="giphy-view"></div>
+            <div id="omdb-view"></div>
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
