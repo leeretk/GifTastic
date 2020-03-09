@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Favorite Clips</title>
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    </head>
+    <title>Favorite Clips</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
 
-    <body>
-        <div class="container">
-            <h1>Content Search</h1>
+<header class="container">
+    Search for Random Movies and Images
+</header>
 
-            <!-- This form will be where users input data about the contents -->
+<body>
+    <div class="container">
+        <h1>Content Search</h1>
 
-            <form id="movie-form">
+        <div id="giphy-view"></div>
 
-                <label for="movie-input"></label>
-                
-                <input type="text" id="movie-input"><br>
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="giphy-button">Search</label>
+                <input type="text" class="form-control" id="giphy-input">
+              </div>
+         
+            <button type="submit" class="btn btn-primary giphy-button">Search</button>
+          </form>
+      
 
-                <!-- This button will trigger our AJAX call -->
-                <input id="find-movie" type="submit" value="Search">
-                <!--<div id="add-movie"></div>-->              
-
-            </form>
-
-            <!-- We'll be dumping our JSON contents in here -->
-            <div id="omdb-title">Title: </div>
-            <div id="omdb-runtime">Runtime: </div>
-            <div id="omdb-rating">Rating: </div>
-            <div id="omdb-poster">Movie: </div>
-
-            <br>
-            <br>
-            <!-- <div id="giphy-view">Giphy's: 
-
-            </div> -->
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-            <script src="assets/javascript/app.js"></script>
-        </div>
-    </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/movies.js"></script>
+        <script src="assets/javascript/giffs.js"></script>
+    </div>
+</body>
 
 </html>

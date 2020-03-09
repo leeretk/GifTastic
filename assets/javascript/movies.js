@@ -1,11 +1,12 @@
-var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
 
       
 function displayMovieInfo() {
 
-    var movie = $(this).attr("data-name");
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+    var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
 
+    var movie = $(this).attr("movie-data");
+
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
         $.ajax({
           url: queryURL,
@@ -51,7 +52,7 @@ function displayMovieInfo() {
             for (var i = 0; i < movies.length; i++) {
             var a = $("<button>");
             a.addClass("movie-btn");
-            a.attr("data-name", movies[i]);
+            a.attr("movie-data", movies[i]);
             a.text(movies[i]);
         $("#buttons-view").append(a);
         }
