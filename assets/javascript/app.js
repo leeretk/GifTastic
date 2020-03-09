@@ -18,14 +18,32 @@ $("#find-content").on("click", function (event) {
         url: queryOMDB,
         method: "GET"
     }).then(function (response) {
+
+        for (var i=0; i < response.data.length ; i++) {
+            var posterImage = $("<img>").response.data[i].Poster;
+
+            posterImage.attr("src", response.data[i].Poster.fixed_height.url)
+
+            $("#omdb-title").text(JSON.stringify("Title: " + response.Title));
+            $("#omdb-runtime").text(JSON.stringify("Runtime: " + response.Runtime));
+            $("#omdb-poster").text(JSON.stringify("Poster: " + response.Poster));
+            $("#omdb-rating").text(JSON.stringify("Rated: " + response.Rated));
+
+        }
+
+//         var giffDiv = $("<div>");
+//         var giffRating = $("<p>").text(JSON.stringify("Rating: " + response.data[i].Rating));
+//         posterImage.attr("src", response.data[i].Poster.fixed_height.url);
+//         console.log(response.data[i].Poster);
+//         console.log(response.data[i].Rating);
+//         $("#giphy-view").text(JSON.stringify("Rated: " + response.Rated));
+
+
         console.log("Title: " + response.Title);
         console.log("Runtime: " + response.Runtime);
         console.log("Poster: " + response.Poster);
         console.log("Rated: " + response.Rated);
-        $("#omdb-title").text(JSON.stringify("Title: " + response.Title));
-        $("#omdb-runtime").text(JSON.stringify("Runtime: " + response.Runtime));
-        $("#omdb-poster").text(JSON.stringify("Poster: " + response.Poster));
-        $("#omdb-rating").text(JSON.stringify("Rated: " + response.Rated));
+
     });
     // queryMovies();
     // queryGiffs();
