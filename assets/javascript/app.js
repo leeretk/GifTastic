@@ -1,34 +1,18 @@
 
-var categories = [
-    "icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",
-];
-
-//giffs = $(this).attr("category-name");
-
-function queryGiffs() {
-    
-    giff = $("#giff-input").val().trim();
-
-    var queryGIPHY = "https://api.giphy.com/v1/gifs/search?q=" + giff + "@api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=5";
-
-    $.ajax({
-        url: queryGIPHY,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        console.log(response);
-        $("#giphy-view").text(JSON.stringify(response))
-    });
-};
-
+// var categories = [
+//     "icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",
+// ];
 
 //movies = $(this).attr("movie-name");
 
-function queryMovies() {
 
-    movie = $("movie-input").val().trim();
+///this connects to the button 
+$("#find-content").on("click", function (event) {
+    event.preventDefault();
 
-    var queryOMDB = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy&limit=5";
+    movie = $("movie-input").val();
+
+    var queryOMDB = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     $.ajax({
         url: queryOMDB,
@@ -43,17 +27,35 @@ function queryMovies() {
         $("#omdb-poster").text(JSON.stringify("Poster: " + response.Poster));
         $("#omdb-rating").text(JSON.stringify("Rated: " + response.Rated));
     });
+    // queryMovies();
+    // queryGiffs();
+});
 
-    ///this connects to the button 
-    $("#find-content").on("click", function (event) {
-        event.preventDefault();
-        queryMovies();
-        queryGiffs();
-    });
-};
+//giffs = $(this).attr("category-name");
+
+// function queryGiffs() {
+
+//     giff = $("#giff-input").val();
+
+//     var queryGIPHY = "https://api.giphy.com/v1/gifs/search?q=" + giff + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+//     $.ajax({
+//         url: queryGIPHY,
+//         method: "GET"
+//     }).then(function (response) {
+//         for (var i=0; i<response.data.length;i++)
+//         var giffDiv = $("<div>");
+//         var giffRating = $("<p>").text(JSON.stringify("Rating: " + response.data[i].Rating));
+//         posterImage.attr("src", response.data[i].Poster.fixed_height.url);
+//         console.log(response.data[i].Poster);
+//         console.log(response.data[i].Rating);
+//         $("#giphy-view").text(JSON.stringify("Rated: " + response.Rated));
+
+//     });
+
+//$("#giphy-view").text.("Response: " + response.data[i].Poster);
 
 //
-
         //renderButtons();
     //find-content
     //category-form

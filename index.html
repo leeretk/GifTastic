@@ -16,28 +16,30 @@
 
             <!-- This form will be where users input data about the contents -->
 
-            <form id="movie-form giff-form">
-                <label for="movie-input"></label>
-                <label for="giff-input"></label>
-                
-                <input type="text" id="movie-input giff-input"><br>
+            <form id="movie-form">
 
+                <label for="movie-input"></label>
+                
+                <input type="text" id="movie-input"><br>
+                
                 <!-- This button will trigger our AJAX call -->
-                <input id="find-movie find-giff" type="submit" value="Search">
-                <div id="add-movie add-giff"></div>
+                <input id="find-content" type="submit" value="Search">
+                <!--<div id="add-movie"></div>-->              
+
             </form>
 
             <!-- We'll be dumping our JSON contents in here -->
-            <div id="omdb-title"></div>
-            <div id="omdb-runtime"></div>
-            <div id="omdb-rating"></div>
+            <div id="omdb-title">Title: </div>
+            <div id="omdb-runtime">Runtime: </div>
+            <div id="omdb-rating">Rating: </div>
             <div id="omdb-poster">Movie: 
             </div>
 
             <br>
             <br>
-            <div id="giphy-view">Giphy's: </div>
+            <!-- <div id="giphy-view">Giphy's: 
 
+            </div> -->
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
