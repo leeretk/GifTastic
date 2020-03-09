@@ -1,53 +1,52 @@
 
-// var categories = [
-//     "icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",
-// ];
-
-//movies = $(this).attr("movie-name");
-
-
 ///this connects to the button 
-$("#find-content").on("click", function (event) {
+
+$("#find-movie").on("click", function (event) {
     event.preventDefault();
 
-    movie = $("movie-input").val();
+    input = $("input").val();
 
-    var queryOMDB = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    var queryOMDB = "https://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
 
     $.ajax({
         url: queryOMDB,
         method: "GET"
     }).then(function (response) {
-
-        for (var i=0; i < response.data.length ; i++) {
-            var posterImage = $("<img>").response.data[i].Poster;
-
-            posterImage.attr("src", response.data[i].Poster.fixed_height.url)
-
-            $("#omdb-title").text(JSON.stringify("Title: " + response.Title));
-            $("#omdb-runtime").text(JSON.stringify("Runtime: " + response.Runtime));
-            $("#omdb-poster").text(JSON.stringify("Poster: " + response.Poster));
-            $("#omdb-rating").text(JSON.stringify("Rated: " + response.Rated));
-
-        }
-
-//         var giffDiv = $("<div>");
-//         var giffRating = $("<p>").text(JSON.stringify("Rating: " + response.data[i].Rating));
-//         posterImage.attr("src", response.data[i].Poster.fixed_height.url);
-//         console.log(response.data[i].Poster);
-//         console.log(response.data[i].Rating);
-//         $("#giphy-view").text(JSON.stringify("Rated: " + response.Rated));
-
-
+        $("#movie-view").text(JSON.stringify(response));
+        $("#omdb-title").text(JSON.stringify("Title: " + response.Title));
+        $("#omdb-runtime").text(JSON.stringify("Runtime: " + response.Runtime));
+        $("#omdb-poster").text(JSON.stringify("Poster: " + response.Poster));
+        $("#omdb-rating").text(JSON.stringify("Rated: " + response.Rated));
         console.log("Title: " + response.Title);
         console.log("Runtime: " + response.Runtime);
         console.log("Poster: " + response.Poster);
         console.log("Rated: " + response.Rated);
 
     });
-    // queryMovies();
-    // queryGiffs();
 });
+
+
+//          $('#movieposters").append(posterDiv) var giffDiv = $("<div>");
+//         var giffRating = $("<p>").text(JSON.stringify("Rating: " + response.data[i].Rating));
+
+        // var posterDiv = $("<div>");
+        // var posterImage = $("<img>");
+        // posterImage.attr("src", response.data[i].Poster.fixed_height.url);
+        // posterDiv.append(p);
+        // posterDiv.append(posterImage);
+//   v        // queryMovies();
+        // queryGiffs();
+// var categories = [
+//     "icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",
+// ];
+
+//movies = $(this).attr("movie-name");
+
+//posterImage.attr("src", response.data[i].Poster.fixed_height.url);
+//         console.log(response.data[i].Poster);
+//         console.log(response.data[i].Rating);
+//         $("#giphy-view").text(JSON.stringify("Rated: " + response.Rated));
+
 
 //giffs = $(this).attr("category-name");
 
