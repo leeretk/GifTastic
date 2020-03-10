@@ -2,39 +2,79 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Favorite Clips</title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <title>Favorite Clips</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
 
-<header class="container">
-    Search for Random Movies and Images
-</header>
-
 <body>
-    <div class="container">
-        <h1>Content Search</h1>
-
-        <div id="giphy-view"></div>
-
-        <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="giphy-button">Search</label>
-                <input type="text" class="form-control" id="giphy-input">
-              </div>
-         
-            <button type="submit" class="btn btn-primary giphy-button">Search</button>
-          </form>
-      
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/javascript/movies.js"></script>
-        <script src="assets/javascript/giffs.js"></script>
+  <div class="container">
+    <br>
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Isn't this GifTastic!</h1>
     </div>
+
+    <div class="row">      
+    
+      <!-- Query Giphy to obtain images-->
+          <div class="col-lg-6">
+          <div class="card card-default">
+          <div class="card-header">
+            ************QUERY DATA HERE**********
+          </div>
+          <div class="card-body">
+            <!-- Query buttons -->
+
+<!--form-->            <form role="form">
+
+<!--row-->   <div class="form-group row">
+                <label for="name-input">****SEARCH1****</label>                <!-- add user button -->
+                <input class="form-control" id="name-input" type="text">
+              </div>
+
+<!--button-->   <button class="btn btn-secondary" id="add-user" 
+               type="submit">Search1Button</button>   
+               
+                  <div class="form-group row">
+                <label for="email-input">****SEARCH2****</label>                <!-- add user button -->
+                <input class="form-control" id="email-input" type="email">
+              </div>
+
+<!--button--> <button class="btn btn-secondary" id="add-user" 
+                type="submit">Search2Button</button>   <!-- add Search1 Button -->
+            </form>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Show GIPHY iamges here  -->
+      <div class="col-lg-6">
+        <div class="card card-default">
+          <div class="card-header">
+            ************SHOW IMAGES HERE **********
+          </div>
+          <div class="card-body" id="recent-member">
+            <div>
+              <img src="" alt=""> <!-- add appendign images here -->
+            </div>
+                        
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/javascript/movies.js"></script>
+  <script src="assets/javascript/giffs.js"></script>
+  </div>
 </body>
 
 </html>

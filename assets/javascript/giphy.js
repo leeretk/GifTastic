@@ -1,6 +1,5 @@
 var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-
 $("#giphy-button").on("click", function() {
 
     var topics = $(this).attr("giphy-input");
@@ -17,34 +16,33 @@ $("#giphy-button").on("click", function() {
         var giphyImage = $("<img>");
            giphyImage.attr("src", imageUrl);
            giphyImage.attr("alt", "giphy image");
-           $("#images").prepend(giphyImage);
+        $("#images").prepend(giphyImage);
         
         //LOOP APPENDING BUTTONS FOR EACH STRING IN THE ARRAY
-  
-        ///CREATE BUTTONS FROM THE ARRAY
+ 
+        // function renderButtons() {
+        //     $("#giphy-buttons-view").empty();
+        //         for (var i = 0; i < movies.length; i++) {
+        //         var a = $("<button>");
+        //         a.addClass("giphy-btn");
+        //         a.attr("giphy-data", movies[i]);
+        //         a.text(movies[i]);
+        //     $("#giphy-buttons-view").append(a);
+        //     }
+        // };
+        //     ///CREATE BUTTONS FROM THE ARRAY
 
-        function renderButtons() {
-            $("#giphy-buttons-view").empty();
-                for (var i = 0; i < movies.length; i++) {
-                var a = $("<button>");
-                a.addClass("movie-btn");
-                a.attr("movie-data", movies[i]);
-                a.text(movies[i]);
-            $("#movie-buttons-view").append(a);
-            }
-        };
+        // // This function handles events where a movie button is clicked
+        // $("#add-movie").on("click", function(event) {
+        //     event.preventDefault();
+        //     var movie = $("#movie-input").val().trim();
+        //     movies.push(movie);
+        //     renderButtons();
+        // });
     
-        // This function handles events where a movie button is clicked
-        $("#add-movie").on("click", function(event) {
-            event.preventDefault();
-            var movie = $("#movie-input").val().trim();
-            movies.push(movie);
-            renderButtons();
-        });
-    
-        $(document).on("click", ".movie-btn", displayMovieInfo);
+        // $(document).on("click", ".movie-btn", displayMovieInfo);
         
-        renderButtons();
+        // renderButtons();
 
     });
 });

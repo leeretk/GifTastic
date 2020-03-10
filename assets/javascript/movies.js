@@ -48,13 +48,13 @@ function displayMovieInfo() {
         });
     
         function renderButtons() {
-        $("#buttons-view").empty();
+        $("#movie-buttons-view").empty();
             for (var i = 0; i < movies.length; i++) {
             var a = $("<button>");
             a.addClass("movie-btn");
             a.attr("movie-data", movies[i]);
             a.text(movies[i]);
-        $("#buttons-view").append(a);
+        $("#movie-buttons-view").append(a);
         }
     };
 
