@@ -3,9 +3,9 @@ var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingp
 
 $("#giphy-button").on("click", function() {
 
-    var giphy = $(this).attr("giphy-input");
+    var topics = $(this).attr("giphy-input");
        
-    var queryURL = "https://api.giphy.com/v1/gifs/random?" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
+    var queryURL = "https://api.giphy.com/v1/gifs/random?" + topics + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
