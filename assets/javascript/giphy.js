@@ -1,25 +1,206 @@
-var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
+$("#giphy-button").on("click", function () {
+    event.preventDefault();
 
-$("#giphy-button").on("click", function() {
+    var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
     var topics = $(this).attr("giphy-input");
-       
-    var queryURL = "https://api.giphy.com/v1/gifs/random?&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
+
+    var queryURL = "https://api.giphy.com/v1/gifs/search?&q=${topics}&limit=10&";
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
-            url: queryURL,
-            method: "GET"
-    }).then(function(response) {
-    
+        url: queryURL,
+        method: "GET"
+        //after the data comes back... then do something
+    }).then(function (response) {
+
         var imageUrl = response.data.image_original_url;
+
         var giphyImage = $("<img>");
-           giphyImage.attr("src", imageUrl);
-           giphyImage.attr("alt", "giphy image");
+        giphyImage.attr("src", imageUrl);
+        giphyImage.attr("alt", "giphy image");
         $("#images").prepend(giphyImage);
-        
+
+    });
+});
+        //    var giphyCount = $("#giphy-count").val();
+        //    var giphyCount = i + 1;
+
+        // for (var i = 0; i < numArticles; i++) {
+
+        //     // Get specific article info for current index
+        //     var giphy = NYTData.response.docs[i];
+
+        //     // Create the  list group to contain the articles and add the article content for each
+        //     var $articleList = $("<ul>");
+        //     $articleList.addClass("list-group");
+
+        //     // Add the newly created element to the DOM
+        //     $("#image-section").append($ImageList);
+        //         }
+        //      //images button       
+
+
+
+        //add jq for "giphy-count"
+
+        //add jq for "clear-all"
+
+
+
+
+
+// const gifForm = document.querySelector("#gif-form");
+// gifForm.addEventListener("submit", fetchGiphs);
+
+// function fetchGiphs(e) {
+//     e.preventDefault();
+//     const searchTerm = document.querySelector(".search").value;
+//     fetch(`https://api.giphy.com/v1/gifs/search?&q=${searchTerm}&limit=100&api_key=3mIxmBZUIIPyb8R69gtxaW8Hsh74dFKV`)
+//     .then((response) => {return response.json(); })
+//     .then((resp => {
+//         // Here we get the data array from the response object
+//         let dataArray = resp.data
+//         // We pass the array to showGiphs function
+//         showGiphs(dataArray);
+//     }))
+//     .catch(err => console.log(err)); // We use catch method for Error handling
+// }
+
+// function showGiphs(dataArray) {
+//   const results = document.querySelector(".results");
+//   let output = '<div class="container">';
+//   dataArray.forEach((imgData) => {
+//     output += `
+//   <img src="${imgData.images.fixed_width.url}"/>
+// `;
+//   });
+//   document.querySelector('.results').innerHTML = output;
+// }
+
+
+//     <form id="gif-form">
+//     <input type="text" class="search">
+//     <input type="submit" value="find">
+// </form>
+// <div class="results"></div>
+
+// // /**
+// //  * takes API data (JSON/object) and turns it into elements on the page
+// //  * @param {object} NYTData - object containing NYT API data
+// //  */
+// //     function updatePage(NYTData) {
+// //     // Get from the form the number of results to display
+//     // API doesn't have a "limit" parameter, so we have to do this ourselves
+//     var numArticles = $("#article-count").val();
+
+//     // Log the NYTData to console, where it will show up as an object
+//     console.log(NYTData);
+//     console.log("------------------------------------");
+
+//     // Loop through and build elements for the defined number of articles
+//     for (var i = 0; i < numArticles; i++) {
+//       // Get specific article info for current index
+//       var article = NYTData.response.docs[i];
+
+//       // Increase the articleCount (track article # - starting at 1)
+//       var articleCount = i + 1;
+
+//       // Create the  list group to contain the articles and add the article content for each
+//       var $articleList = $("<ul>");
+//       $articleList.addClass("list-group");
+
+//       // Add the newly created element to the DOM
+//       $("#article-section").append($articleList);
+
+//       // If the article has a headline, log and append to $articleList
+//       var headline = article.headline;
+//       var $articleListItem = $("<li class='list-group-item articleHeadline'>");
+
+//       if (headline && headline.main) {
+//         console.log(headline.main);
+//         $articleListItem.append(
+//           "<span class='label label-primary'>" +
+//             articleCount +
+//             "</span>" +
+//             "<strong> " +
+//             headline.main +
+//             "</strong>"
+//         );
+//       }
+
+//       // If the article has a byline, log and append to $articleList
+//       var byline = article.byline;
+
+//       if (byline && byline.original) {
+//         console.log(byline.original);
+//         $articleListItem.append("<h5>" + byline.original + "</h5>");
+//       }
+
+//       // Log section, and append to document if exists
+//       var section = article.section_name;
+//       console.log(article.section_name);
+//       if (section) {
+//         $articleListItem.append("<h5>Section: " + section + "</h5>");
+//       }
+
+//       // Log published date, and append to document if exists
+//       var pubDate = article.pub_date;
+//       console.log(article.pub_date);
+//       if (pubDate) {
+//         $articleListItem.append("<h5>" + article.pub_date + "</h5>");
+//       }
+
+//       // Append and log url
+//       $articleListItem.append("<a href='" + article.web_url + "'>" + article.web_url + "</a>");
+//       console.log(article.web_url);
+
+//       // Append the article
+//       $articleList.append($articleListItem);
+//     }
+//   }
+
+//   // Function to empty out the articles
+//   function clear() {
+//     $("#article-section").empty();
+//   }
+
+//   // CLICK HANDLERS
+//   // ==========================================================
+
+//   // .on("click") function associated with the Search Button
+//   $("#run-search").on("click", function(event) {
+//     // This line allows us to take advantage of the HTML "submit" property
+//     // This way we can hit enter on the keyboard and it registers the search
+//     // (in addition to clicks). Prevents the page from reloading on form submit.
+//     event.preventDefault();
+
+//     // Empty the region associated with the articles
+//     clear();
+
+//     // Build the query URL for the ajax request to the NYT API
+//     var queryURL = buildQueryURL();
+
+//     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
+//     // The data then gets passed as an argument to the updatePage function
+//     $.ajax({
+//       url: queryURL,
+//       method: "GET"
+//     }).then(updatePage);
+//   });
+
+//   //  .on("click") function associated with the clear button
+//   $("#clear-all").on("click", clear);
+
+
+
+
+
+// Replaces the content in the "recent-member" div with the new info
+
+
         //LOOP APPENDING BUTTONS FOR EACH STRING IN THE ARRAY
- 
+
         // function renderButtons() {
         //     $("#giphy-buttons-view").empty();
         //         for (var i = 0; i < movies.length; i++) {
@@ -39,13 +220,10 @@ $("#giphy-button").on("click", function() {
         //     movies.push(movie);
         //     renderButtons();
         // });
-    
-        // $(document).on("click", ".movie-btn", displayMovieInfo);
-        
-        // renderButtons();
 
-    });
-});
+        // $(document).on("click", ".movie-btn", displayMovieInfo);
+
+        // renderButtons();
 
 // Instructions
     //DONE // Before you can make any part of your site work, you need to
