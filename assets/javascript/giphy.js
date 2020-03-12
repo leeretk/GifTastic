@@ -2,81 +2,86 @@
 
 var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
+function renderButtons() {
+    console.log("I am in the render function")
+        $("#new-giphy-buttons").empty();
+    
+        for (var i = 0; i < topics.length; i++) {
+          var a = $("<button>");
+          a.addClass("topic");
+          a.attr("data-name", topics[i]);
+          a.text(topics[i]);
+          $("#new-giphy-buttons").append(a);
+        }
+}
 
 $("#giphy-button").on("click", function () {
     event.preventDefault();
 
     var giphy = $("#giphy-input").val().trim();
 
-    topics.push(giphy);
+    giphy.push(topic)
 
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
 
-//    var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
+    console.log(queryURL);
 
-
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&tag=" + giphy;
-
-        console.log(queryURL);
-
-
-    // Perfoming an AJAX GET request to our queryURL
     $.ajax({
         url: queryURL,
         method: "GET"
         //after the data comes back... then do something
     }).then(function (response) {
         console.log(response)
-
-        // for (i=0; i<10; i++) {
-            var imageUrl = response.data.image_original_url;
-            var giphyImage = $("<img>");
-            giphyImage.attr("src", imageUrl);
-            giphyImage.attr("alt", "giphy image");
+              
+       for (i=0; i<10; i++) {
+           var imageUrl = response.data[0].Images.downsized_url;
+           var giphyImage = $("<img>");
+           giphyImage.attr("src", imageUrl);
+           giphyImage.attr("alt", "giphy image");
+           
             $("#images").prepend(giphyImage);
-            
-
-
-    //}
-       // This line will grab the text from the input box
-
-
-       renderButtons();        
-    });
- 
-});
-
-function renderButtons() {
-console.log("I am in the render function")
-    $("#new-giphy-buttons").empty();
-
-    for (var i = 0; i < topics.length; i++) {
-
-      var a = $("<button>");
-      a.addClass("topic");
-      a.attr("data-name", topics[i]);
-      a.text(topics[i]);
-      $("#new-giphy-buttons").append(a);
-      }
-  }
-// Calling the renderButtons function at least once to display the initial list of movies
+            $("#rating").text(response.data.Rating)
+            console.log(response.data[0].Rating)
+        }
+    });          
+        
+ });
   renderButtons();
 
 
-$(".topic").on("click", 
+
+// // ADJUST ANIMATION
+
+// $( "#go" ).click(function() {
+//     $( ".block" ).animate({ left: "+=100px" }, 2000 );
+//   });
+   
+// // Stop animation when button is clicked
+//   $( "#stop" ).click(function() {
+//     $( ".block" ).stop();
+//   });
+   
+//   // Start animation in the opposite direction
+//   $( "#back" ).click(function() {
+//     $( ".block" ).animate({ left: "-=100px" }, 2000 );
+//   });
 
 
-)
+
+// $(".topic").on("click", 
+
+
 
 // Instructions
-    //DONE // Before you can make any part of your site work, you need to
+//DONE // Before you can make any part of your site work, you need to
            //create an array of strings, each one related to a topic that 
            //interests you. Save it to a variable called topics.
 
-        // Your app should take the topics in this array and create buttons in your HTML.
+//DONE   // Your app should take the topics in this array and create buttons in your HTML.
 
-        // Try using a loop that appends a button for each string in the array.
+//DONE // Try using a loop that appends a button for each string in the array.
 
-        // When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
 
         // When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
 
