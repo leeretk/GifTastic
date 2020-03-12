@@ -1,52 +1,70 @@
 
-
+//create topics variables
 var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-function renderButtons() {
-    console.log("I am in the render function")
-        $("#new-giphy-buttons").empty();
-    
-        for (var i = 0; i < topics.length; i++) {
-          var a = $("<button>");
-          a.addClass("topic");
-          a.attr("data-name", topics[i]);
-          a.text(topics[i]);
-          $("#new-giphy-buttons").append(a);
-        }
-}
+//create display giphy function 
 
-$("#giphy-button").on("click", function () {
-    event.preventDefault();
+function displayGiphy() {
 
-    var giphy = $("#giphy-input").val().trim();
+    var giphyTopic=$(this).attr("giphy-data");
 
-    giphy.push(topic)
+    var queryURL = "https://api.giphy.com/v1/gifs/search?=api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
-
-    console.log(queryURL);
+    //create AJAX call
 
     $.ajax({
         url: queryURL,
         method: "GET"
         //after the data comes back... then do something
     }).then(function (response) {
-        console.log(response)
+        
+            console.log(response)
               
        for (i=0; i<10; i++) {
-           var imageUrl = response.data[0].Images.downsized_url;
-           var giphyImage = $("<img>");
-           giphyImage.attr("src", imageUrl);
-           giphyImage.attr("alt", "giphy image");
            
-            $("#images").prepend(giphyImage);
-            $("#rating").text(response.data.Rating)
-            console.log(response.data[0].Rating)
+            var imageUrl = response.data[i].images.user_avatar_url;
+
+            var  giphyImage = $("<img>");
+                 giphyImage.attr("src", imageUrl);
+                 giphyImage.attr("alt", "giphy image");
+                 giphyImage.attr("giphy-data", topics[i]);
+           
+           $("#new-giphy-buttons").prepend(giphyImage);
+
+           $("#rating").text(response.data[i].rating)
+
+            console.log("Rating: " + response.data[i].rating)///this is working
         }
-    });          
+    }); 
+};
+
+function renderButtons() {
+        $("#new-giphy-buttons").empty();
+    
+        for (var i = 0; i < topics.length; i++) {
+            var a = $("<button>");
+                a.addClass("topic");
+                a.attr("giphy-data", topics[i]);
+                a.text(topics[i]);
         
- });
-  renderButtons();
+            $("#new-giphy-buttons").append(a);
+        }
+};
+
+
+//this
+$("add-giphy").on("click", function (event) {
+    event.preventDefault();
+
+    var giphy = $("#giphy-input").val().trim();
+    giphy.push(topics);
+    renderButtons();
+});
+
+
+
+ $(document).on("click", ".giphy", displayGiphy);
+ renderButtons();
 
 
 

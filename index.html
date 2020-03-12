@@ -13,98 +13,87 @@
 </head>
 
 <body>
-      <!-- Main Bootstrap Search -->
-      <div class="container">
-    
-        <!-- Jumbotron for Title -->
-        <div class="jumbotron" style="background-color: green; color: white;">
-          <h1 class="text-center">
-            <strong>
-              <i class="fa fa-newspaper-o"></i> Isn't this GifTastic!?<!DOCTYPE html>
-              <html lang="en">
-              <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-              </head>
-              <body>
-                
-              </body>
-              </html></strong>
-          </h1>
-        </div>
-    
-        <!-- Row for Searching Giphy's -->
-        <div class="row">
-          <div class="col-sm-12">
-            <br>
-            <!-- First card is for handling the search parameters -->
-            <div class="card">
-              <div class="card-header">
-                <strong>
-                  <i class="fa fa-list-alt"></i> Search Parameters</strong>
-              </div>
+  <!-- Main Bootstrap Search -->
+  <div class="container">
+
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron" style="background-color: green; color: white;">
+      <h1 class="text-center"><strong>
+          <i class="fa fa-newspaper-o"></i> Isn't this GifTastic!?</strong></h1>
+    </div>
+
+    <!-- Row for Searching Giphy's -->
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <div class="card">
+          <div class="card-header"><strong>
+              <i class="fa fa-list-alt"></i> Search Parameters</strong>
+          </div>
               <div class="card-body">
-    
+
+
                 <!-- Here we create an HTML Form for handling the ******INPUTS*******-->
                 <form role="form">
-    
-                  <!-- Here we create the text box for capturing the search term-->
-                  <div class="form-group">
-                    <label for="search">Search Giphy:</label>
-                    <input type="text" class="form-control" id="giphy-input">
-                  </div>
-    
-                  <div id="new-giphy-buttons">
 
-                  </div>
-
-                  <!-- Here we capture the number of records that the user wants to retrieve  -->
-                  <div class="form-group">
-
-                    <label for="pwd">Number of Records to Retrieve:</label>
-                    <select id="giphy-count" class="custom-select" aria-labelledby="dropdownMenuButton">
-                      <option selected value="1">1</option>
-                      <option value="5" >5</option>
-                      <option value="10" selected>10</option>
-                    </select>
-                  </div>
-    
-                  <!-- Here we have our final submit button -->
-                  
-                  <button type="submit" class="btn btn-secondary" id="giphy-button">
-                    <i class="fa fa-search"></i> Search</button>
-                  
-                    <button class="btn btn-secondary" id="clear-all">
-                    <i class="fa fa-trash"></i> Clear Results</button>
-
-
-                </form>
+                <!-- text box for searching search term-->
+              <div class="form-group">
+                <label for="search">Search Giphy:</label>
+                <input type="text" class="form-control" id="giphy-input">
               </div>
-            </div>
+
+              <div id="new-giphy-buttons"></div>
+
+              <div id="rating">Rating:</di
+                v>
+              <br>
+              <br>
+              <!-- Here we capture the number of records that the user wants to retrieve  -->
+              <div class="form-group">
+
+                <label for="pwd">Number of Records to Retrieve:</label>
+                <select id="giphy-count" class="custom-select" aria-labelledby="dropdownMenuButton">
+                  <option selected value="1">1</option>
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                </select>
+              </div>
+
+              <!-- Here we have our final submit button -->
+
+              <button type="submit" class="btn btn-secondary" id="giphy-button">
+                <i class="fa fa-search"></i> Search</button>
+
+              <button class="btn btn-secondary" id="clear-all">
+                <i class="fa fa-trash"></i> Clear Results</button>
+
+            </form>
           </div>
         </div>
-    
+      </div>
+    </div>
 
-        <!-- This row will handle all of the retrieved images -->
-        <div class="row">
-          <div class="col-sm-12">
-            <br>
-    
-            <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
-            <div class="card">
-    
-              <!-- card Heading to insert images box -->
-              <div class="card-header">
-                <strong>
-                  <i class="fa fa-table"></i> Images </strong>
-              </div>
-    
-            <!-- This main card will hold the Giphy images -->
-              <div1 class="card-body" id="images" style="width: 200px; height: 150px;"></div>
-            </div1>
+
+    <!-- This row will handle all of the retrieved images -->
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+
+        <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+        <div class="card">
+
+          <!-- card Heading to insert images box -->
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-table"></i> Images </strong>
           </div>
+
+          <!-- This main card will hold the Giphy images -->
+          <div1 class="card-body" id="images" style="width: 200px; height: 150px;">
         </div>
+        </div1>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/giphy.js"></script>
