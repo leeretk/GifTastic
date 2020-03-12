@@ -6,10 +6,9 @@ var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingp
 
 function displayGiphy() {
 
-    var giphyTopic=$(this).attr("giphy-data");
-
-    var queryURL = "https://api.giphy.com/v1/gifs/search?=api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
-
+var giphy = $("#giphy-input").val().trim();
+ 
+ var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
     //create AJAX call
 
     $.ajax({
@@ -26,7 +25,7 @@ function displayGiphy() {
 
             var  giphyImage = $("<img>");
                  giphyImage.attr("src", imageUrl);
-                 giphyImage.attr("alt", "giphy image");
+                 giphyImage.attr("alt", "giphy-image");
                  giphyImage.attr("giphy-data", topics[i]);
            
            $("#new-giphy-buttons").prepend(giphyImage);
@@ -38,33 +37,33 @@ function displayGiphy() {
     }); 
 };
 
-function renderButtons() {
-        $("#new-giphy-buttons").empty();
+// function renderButtons() {
+//         $("#new-giphy-buttons").empty();
     
-        for (var i = 0; i < topics.length; i++) {
-            var a = $("<button>");
-                a.addClass("topic");
-                a.attr("giphy-data", topics[i]);
-                a.text(topics[i]);
+//         for (var i = 0; i < topics.length; i++) {
+//             var a = $("<button>");
+//                 a.addClass("topic");
+//                 a.attr("giphy-data", topics[i]);
+//                 a.text(topics[i]);
         
-            $("#new-giphy-buttons").append(a);
-        }
-};
+//             $("#new-giphy-buttons").append(a);
+//         }
+// };
 
 
-//this
-$("add-giphy").on("click", function (event) {
-    event.preventDefault();
+// //this
+// $("add-giphy").on("click", function (event) {
+//     event.preventDefault();
 
-    var giphy = $("#giphy-input").val().trim();
-    giphy.push(topics);
-    renderButtons();
-});
+    
+//     giphy.push(topics);
+//     renderButtons();
+// });
 
 
 
- $(document).on("click", ".giphy", displayGiphy);
- renderButtons();
+//  $(document).on("click", ".giphy", displayGiphy);
+//  renderButtons();
 
 
 

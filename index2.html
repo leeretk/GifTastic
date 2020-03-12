@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GifTastic</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets\css\style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron" style="background-color: green; color: white;">
+            <h1 class="text-center"><strong>
+                    <i class="fa fa-newspaper-o"></i> Isn't this GifTastic!?</strong></h1>
+        </div>
+
+        <!-- Row for Searching Giphy's -->
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="card">
+                    <div class="card-header"><strong>
+                            <i class="fa fa-list-alt"></i> Search Parameters</strong>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form role="form">
+
+                            <div class="form-group">
+                                <label for="search">Search Giphy:</label>
+                                <input type="text" class="form-control" id="giphy-input">   
+                            </div><!-- GIPHY INPUT FIELD -->
+
+                            <div id="gifs-appear-here"></div>
+                            <br>
+                            <br>
+
+                            <!-- Final Submit Button -->
+
+                            <button type="submit" class="btn btn-secondary" id="add-giphy-button">
+
+                                <i class="fa fa-search"></i> Search</button>
+                            <button class="btn btn-secondary" id="clear-all">
+                                <i class="fa fa-trash"></i> Clear Results</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- This row will handle all of the retrieved images -->
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <div class="card">
+
+                    <!-- card Heading to insert images box -->
+                    <div class="card-header">
+                        <strong>
+                            <i class="fa fa-table"></i> Images </strong>
+                    </div>
+
+                    <!-- This main card will hold the Giphy images -->
+                    <div1 class="card-body" id="giphy-image" style="width: 200px; height: 150px;"></div1>
+                    <div id="ratings-appear-here">Rating:</div>
+                    </div1>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="assets/javascript/giphy2.js"></script>
+
+</body>
+
+</html>
