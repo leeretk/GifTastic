@@ -48,37 +48,26 @@
     
                 <!-- Here we create an HTML Form for handling the ******INPUTS*******-->
                 <form role="form">
-    
-                  <!-- Here we create the text box for capturing the search term-->
+                  
+                  <!-- GIPHY SEARCH BOX -->
                   <div class="form-group">
                     <label for="search">Search Giphy:</label>
                     <input type="text" class="form-control" id="giphy-input">
                   </div>
-    
-                  <div id="new-giphy-buttons">
+                  
+                  <!-- GIPHY BUTTONS FROM TOPICS AND NEW BUTTONS -->
+                  <div id="new-giphy-buttons"></div>
 
                   </div>
 
-                  <!-- Here we capture the number of records that the user wants to retrieve  -->
-                  <div class="form-group">
+                <div class="form-group">
 
-                    <label for="pwd">Number of Records to Retrieve:</label>
-                    <select id="giphy-count" class="custom-select" aria-labelledby="dropdownMenuButton">
-                      <option selected value="1">1</option>
-                      <option value="5" >5</option>
-                      <option value="10" selected>10</option>
-                    </select>
-                  </div>
-    
-                  <!-- Here we have our final submit button -->
+                  
+                  <!-- SEARCH BUTTON-->
                   
                   <button type="submit" class="btn btn-secondary" id="giphy-button">
                     <i class="fa fa-search"></i> Search</button>
                   
-                    <button class="btn btn-secondary" id="clear-all">
-                    <i class="fa fa-trash"></i> Clear Results</button>
-
-
                 </form>
               </div>
             </div>
@@ -86,12 +75,13 @@
         </div>
     
 
-        <!-- This row will handle all of the retrieved images -->
+        <!-- IMAGES WILL GO HERE -->
+        <div class="container">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col">
             <br>
     
-            <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+            <!-- THIS CARD IS THE STRUCTURE FOR IMAGES -->
             <div class="card">
     
               <!-- card Heading to insert images box -->
@@ -100,12 +90,14 @@
                   <i class="fa fa-table"></i> Images </strong>
               </div>
     
-            <!-- This main card will hold the Giphy images -->
-              <div1 class="card-body" id="images" style="width: 200px; height: 150px;"></div>
+              <!-- style="width: 200px; height: 150px;" -->
+
+             <!-- THIS CARD HOLDS THE IMAGES -->
+              <div1 class="card-body" id="images" ></div> 
             </div1>
           </div>
         </div>
-
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/giphy.js"></script>
 

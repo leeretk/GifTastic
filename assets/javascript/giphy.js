@@ -6,14 +6,13 @@ var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingp
 $("#giphy-button").on("click", function () {
     event.preventDefault();
 
-    // This line will grab the text from the input box
-    var giphy = $("#giphy-input").val().trim();
+   // This line will grab the text from the input box
+        var giphy = $("#giphy-input").val().trim();
+        topics.push(giphy);
+    
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-    topics.push(giphy);
-
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-
-        console.log(queryURL);
+       console.log("query url" + queryURL);
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
@@ -55,9 +54,41 @@ console.log("I am in the render function")
 // Calling the renderButtons function at least once to display the initial list of movies
   renderButtons();
 
-  
+ 
 
-//$(".topic").on("click", 
+$("#topics-button").on("click", function () {
+                event.preventDefault();
+
+           for (i=0; i<10; i++) {
+                topics++
+
+                topic = $("#topics-input").val().trim();
+                topic.push(topics);
+            
+                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+                }
+
+        // Perfoming an AJAX GET request to our queryURL
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        //after the data comes back... then do something
+         }).then(function (response) {
+        console.log(response)
+
+         for (i=0; i<10; i++) {
+            var imageUrl = response.data[i].images.preview_gif.url;
+            var giphyImage = $("<img>");
+            giphyImage.attr("src", imageUrl);
+            giphyImage.attr("alt", "giphy image");
+            $("#images").prepend(giphyImage);
+            console.log("SOURCE: " + response.data[i].source)
+            console.log("IMAGE URL: " + imageUrl)
+           }
+       
+        });
+});
+
 
 
 // )
