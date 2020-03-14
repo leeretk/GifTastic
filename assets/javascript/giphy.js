@@ -1,109 +1,83 @@
-var topics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-$("#giphy-button").on("click", function(event) {
-        event.preventDefault();
-        // This line will grab the text from the input box
-        var giphy = $("#giphy-input").val().trim();
-        topics.push(giphy);
+function displaygetHockeyTopic() {
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-        // Perfoming an AJAX GET request to our queryURL
-        $.ajax({
-                url: queryURL,
-                method: "GET"
-                //after the data comes back... then do something
-        }).then(function (response) {
-                console.log(response)
+        $("#getHockeyTopic-button").on("click", function () {
+                event.preventDefault();
 
-                for (i = 0; i < 10; i++) {
-                        //add counter so you can get 10 different images each time. 
-                        //add a random number generating and add 10 // do something here
-                        //so you can change the sequence of i.
+                // This line will grab the text from the input box
+                var getgetHockeyTopic = $("#getHockeyTopic-input").val().trim();
 
-                        //get image from giphy.com
-                        var imageUrl = response.data[i].images.preview_gif.url;
-                        var giphyImage = $("<img>");
-                        //create giphy attribute
-                        giphyImage.attr("src", imageUrl);
-                        giphyImage.attr("alt", "giphy image");
-                        //append images
-                        $("#images").prepend(giphyImage);
+                hockeyTopics.push(getHockeyTopic);
 
-                        //get rating from giphy.com
-                        var rating = response.data[i].rating;
-                        var pRating = $("<p>").text("Rating: " + rating);
-                        giphyDiv.append(pRating);
-                        $("#rating").prepend(pRating);
+                var queryURL = "https://api.getHockeyTopic.com/v1/gifs/search?q=" + getHockeyTopic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-                        //get title from giphy.com
-                        var title = response.data[i].title;
-                        var pTitle = $("<p>").text("Rating: " + title);
-                        giphyDiv.append(pTitle);
-                        $("#title").prepend(pTitle);
-                }
-                renderButtons();
-               // $(document).on("click", ".giphy-btn", displayGiphy);
+                // Perfoming an AJAX GET request to our queryURL
+                $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                        //after the data comes back... then do something
+                }).then(function (response) {
+                        console.log(response)
 
+                        for (i = 0; i < 10; i++) {
+                                //add counter so you can get 10 different images each time. 
+                                //add a random number generating and add 10 // do something here
+                                //so you can change the sequence of i.
+
+                                //get image from getHockeyTopic.com
+                                var imageUrl = response.data[i].images.preview_gif.url;
+                                var getHockeyTopicImage = $("<img>");
+                                //create getHockeyTopic attribute
+                                getHockeyTopicImage.attr("src", imageUrl);
+                                getHockeyTopicImage.attr("alt", "getHockeyTopic image");
+                                //append images
+                                $("#images").prepend(getHockeyTopicImage);
+                                //turn off image animation 
+                                //create toggle
+
+                                //get rating from getHockeyTopic.com
+                                var rating = response.data[i].rating;
+                                $("#rating").text(JSON.stringify("Rating: " + rating));
+                                $("#rating").prepend(title);
+                                console.log("Rating: " + title)
+
+                                //get title from getHockeyTopic.com
+                                var title = response.data[i].title;
+                                $("#title").text(JSON.stringify("Title: " + title));
+                                $("#title").prepend(title);
+                                console.log("Title: " + title)
+                        }
+                });
         });
 
-});
+        function renderButtons() {
+                $("#new-getHockeyTopic-buttons").empty();
 
+                for (var i = 0; i < hockeyTopics.length; i++) {
+                        var a = $("<button>");
+                        a.addClass("hockeyTopic");
+                        a.attr("hockey-data", hockeyTopics[i]);
+                        a.text(hockeyTopics[i]);
+                        $("#new-getHockeyTopic-buttons").append(a);
+                        console.log("HockeyTopics: " + hockeyTopics[i])
+                }
+        };
+        //This function handle the buttons
 
-function renderButtons() {
-        console.log("I am in the render function")
-        $("#new-giphy-buttons").empty();
-        for (var i = 0; i < topics.length; i++) {
-                var a = $("<button>");
-                a.addClass("topic");
-                a.attr("data-name", topics[i]);
-                a.text(topics[i]);
-                $("#new-giphy-buttons").append(a);
-                console.log("TOPICS: " + topics[i])
-        }
+        $("#add-hockeyTopics").on("click", function (event) {
+                event.preventDefault();
+                var topic = $(this).attr("hockey-data");
+                var topic = $("hockeyTopic-input").val().trim();
+                hockeyTopics.push(topic);
+                console.log("hockeyTopic" + topic);
+                renderButtons();
+        });
+
+        $(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
+
 };
-
-renderButtons();
-
-// //This function handles events where a movie button is clicked
-// $("#add-giphy").on("click", function (event) {
-//         event.preventDefault();
-//         var topic = $(this).attr("data-name");
-//         var topic = $("giphy-input").val().trim();
-//         topics.push(topic);
-//         console.log("topic" + topic);
-// });
-
-
-
-
-        //LOOP APPENDING BUTTONS FOR EACH STRING IN THE ARRAY
-
-        // function renderButtons() {
-        //     $("#giphy-buttons-view").empty();
-        //         for (var i = 0; i < movies.length; i++) {
-        //         var a = $("<button>");
-        //         a.addClass("giphy-btn");
-        //         a.attr("giphy-data", movies[i]);
-        //         a.text(movies[i]);
-        //     $("#giphy-buttons-view").append(a);
-        //     }
-        // };
-        //     ///CREATE BUTTONS FROM THE ARRAY
-
-        // // This function handles events where a movie button is clicked
-        // $("#add-giphy").on("click", function(event) {
-        //     event.preventDefault();
-        //     var topic = $("#giphy-input").val().trim();
-        //     topics.push(topic);
-        //     renderButtons();
-        // });
-
-        // $(document).on("click", ".giphy-btn", displayGiphy);
-
-        // renderButtons();
-
-
 
 // Instructions
         //DONE // Before you can make any part of your site work, you need to
@@ -114,9 +88,9 @@ renderButtons();
 
         //DONE// Try using a loop that appends a button for each string in the array.
 
-                // When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
+                // When the user clicks on a button, the page should grab 10 static, non-animated gif images from the getHockeyTopic API and place them on the page.
 
-                // When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
+                // When the user clicks one of the still getHockeyTopic images, the gif should animate. If the user clicks the gif again, it should stop playing.
 
                 // Under every gif, display its rating (PG, G, so on).
 
