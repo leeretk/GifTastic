@@ -6,116 +6,87 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="HandheldFriendly" content="true">
-
   <title>GifTastic</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-
   <link rel="stylesheet" href="assets\css\style.css">
-
 </head>
 
 <body>
+
   <!-- Main Bootstrap Search -->
   <div class="container">
-
     <!-- Jumbotron for Title -->
     <div class="jumbotron" style="background-color: green; color: white;">
       <h1 class="text-center">
         <strong>
           <i class="fa fa-newspaper-o"></i> Isn't this GifTastic!?
-          <!DOCTYPE html>
-          <html lang="en">
-
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-          </head>
-
-          <body>
-
-          </body>
-
-          </html>
         </strong>
       </h1>
     </div>
+  </div>
 
-    <!-- Row for Searching Giphy's -->
+  <!-- Row for Searching Giphy's -->
+  <div class="row">
+    <div class="col-sm-12">
+      <br>
+      <!-- First card is for handling the search parameters -->
+      <div class="card">
+        <div class="card-header"><strong>
+            <i class="fa fa-list-alt"></i> Search Parameters</strong>
+        </div>
+
+        <div class="card-body">
+
+          <!-- Here we create an HTML Form for handling the ******INPUTS*******-->
+          <form role="form">
+
+            <!-- GIPHY SEARCH BOX -->
+            <div class="form-group">
+              <label for="search">Search:</label>
+              <input type="text" class="form-control" id="getHockeyTopic-input">
+            </div>
+
+            <!-- GIPHY BUTTONS FROM TOPICS AND NEW BUTTONS -->
+            <div class="text-center" id="new-getHockeyTopic-buttons"></div>
+
+            <div class="form-group">
+
+              <!-- SEARCH BUTTON-->
+
+              <button type="submit" class="btn btn-secondary" id="getHockeyTopic-button">
+                <i class="fa fa-search"></i> Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGES WILL GO HERE -->
+  <div class="container">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col">
         <br>
-        <!-- First card is for handling the search parameters -->
+        <!-- THIS CARD IS THE STRUCTURE FOR IMAGES -->
         <div class="card">
+          <!-- card Heading to insert images box -->
           <div class="card-header">
             <strong>
-              <i class="fa fa-list-alt"></i> Search Parameters</strong>
+              <i class="fa fa-table"></i> Images </strong>
           </div>
-          <div class="card-body">
-
-            <!-- Here we create an HTML Form for handling the ******INPUTS*******-->
-            <form role="form">
-
-              <!-- GIPHY SEARCH BOX -->
-              <div class="form-group">
-                <label for="search">Search Giphy:</label>
-                <input type="text" class="form-control" id="giphy-input">
-              </div>
-
-              <!-- GIPHY BUTTONS FROM TOPICS AND NEW BUTTONS -->
-              <div id="new-giphy-buttons"></div>
-
-          </div>
-
-          <div class="form-group">
-
-
-
-            <!-- SEARCH BUTTON-->
-
-            <button type="submit" class="btn btn-secondary" id="giphy-button">
-              <i class="fa fa-search"></i> Search</button>
-
-
-
-            </form>
+        </div>
+        <!-- style="width: 200px; height: 150px;" -->
+        <!-- THIS CARD HOLDS THE IMAGES -->
+        <div class="container">
+          <div class="row">
+            <div class="col card-body" id="images">Image</div>
+            <div class="col card-body" id="rating">Rating</div>
+            <div class="col card-body" id="title">Title</div>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- IMAGES WILL GO HERE -->
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <br>
-
-          <!-- THIS CARD IS THE STRUCTURE FOR IMAGES -->
-          <div class="card">
-
-            <!-- card Heading to insert images box -->
-            <div class="card-header">
-              <strong>
-                <i class="fa fa-table"></i> Images </strong>
-            </div>
-
-            <!-- style="width: 200px; height: 150px;" -->
-
-            <!-- THIS CARD HOLDS THE IMAGES -->
-            <div class="container">
-              <div class="row">
-                <div class="col card-body" id="images">Image</div>
-                <div class="col card-body" id="rating">Rating</div>
-                <div class="col card-body" id="title">Title</div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/javascript/giphy.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/giphy.js"></script>
 
 </body>
 

@@ -1,83 +1,84 @@
 
-function displaygetHockeyTopic() {
+var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-        var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
+$("#getHockeyTopic-button").on("click", function displayHockeyInfo() {
+        event.preventDefault();
 
-        $("#getHockeyTopic-button").on("click", function () {
-                event.preventDefault();
+        // This line will grab the text from the input box
+        var getHockeyTopic = $("#getHockeyTopic-input").val().trim();
 
-                // This line will grab the text from the input box
-                var getgetHockeyTopic = $("#getHockeyTopic-input").val().trim();
+        hockeyTopics.push(getHockeyTopic);
 
-                hockeyTopics.push(getHockeyTopic);
+        var queryURL = "https://api.getHockeyTopic.com/v1/gifs/search?q=" + getHockeyTopic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-                var queryURL = "https://api.getHockeyTopic.com/v1/gifs/search?q=" + getHockeyTopic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        // Perfoming an AJAX GET request to our queryURL
+        $.ajax({
+                url: queryURL,
+                method: "GET"
+                //after the data comes back... then do something
+        }).then(function (response) {
+                console.log(response)
 
-                // Perfoming an AJAX GET request to our queryURL
-                $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                        //after the data comes back... then do something
-                }).then(function (response) {
-                        console.log(response)
+                for (i = 0; i < 10; i++) {
+                        //add counter so you can get 10 different images each time. 
+                        //add a random number generating and add 10 // do something here
+                        //so you can change the sequence of i.
 
-                        for (i = 0; i < 10; i++) {
-                                //add counter so you can get 10 different images each time. 
-                                //add a random number generating and add 10 // do something here
-                                //so you can change the sequence of i.
+                        //get image from getHockeyTopic.com
+                        var imageUrl = response.data[i].images.preview_gif.url;
+                        var getHockeyTopicImage = $("<img>");
+                        //create getHockeyTopic attribute
+                        getHockeyTopicImage.attr("src", imageUrl);
+                        getHockeyTopicImage.attr("alt", "getHockeyTopic image");
+                        //append images
+                        $("#images").prepend(getHockeyTopicImage);
+                        //turn off image animation 
+                        //create toggle
+                        //should we append to a DIV here so the image, rating and title show in the same container?
 
-                                //get image from getHockeyTopic.com
-                                var imageUrl = response.data[i].images.preview_gif.url;
-                                var getHockeyTopicImage = $("<img>");
-                                //create getHockeyTopic attribute
-                                getHockeyTopicImage.attr("src", imageUrl);
-                                getHockeyTopicImage.attr("alt", "getHockeyTopic image");
-                                //append images
-                                $("#images").prepend(getHockeyTopicImage);
-                                //turn off image animation 
-                                //create toggle
+                        //get rating from getHockeyTopic.com
+                        var rating = response.data[i].rating;
+                        $("#rating").text(JSON.stringify("Rating: " + rating));
+                        $("#rating").prepend(title);
+                        console.log("Rating: " + title)
 
-                                //get rating from getHockeyTopic.com
-                                var rating = response.data[i].rating;
-                                $("#rating").text(JSON.stringify("Rating: " + rating));
-                                $("#rating").prepend(title);
-                                console.log("Rating: " + title)
+                        //get title from getHockeyTopic.com
+                        var title = response.data[i].title;
+                        $("#title").text(JSON.stringify("Title: " + title));
+                        $("#title").prepend(title);
+                        console.log("Title: " + title)
+                };
 
-                                //get title from getHockeyTopic.com
-                                var title = response.data[i].title;
-                                $("#title").text(JSON.stringify("Title: " + title));
-                                $("#title").prepend(title);
-                                console.log("Title: " + title)
-                        }
-                });
+                //$(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
         });
+        renderButtons();
+});
 
-        function renderButtons() {
-                $("#new-getHockeyTopic-buttons").empty();
+function renderButtons() {
+        $("#new-getHockeyTopic-buttons").empty();
 
-                for (var i = 0; i < hockeyTopics.length; i++) {
-                        var a = $("<button>");
-                        a.addClass("hockeyTopic");
-                        a.attr("hockey-data", hockeyTopics[i]);
-                        a.text(hockeyTopics[i]);
-                        $("#new-getHockeyTopic-buttons").append(a);
-                        console.log("HockeyTopics: " + hockeyTopics[i])
-                }
-        };
-        //This function handle the buttons
-
-        $("#add-hockeyTopics").on("click", function (event) {
-                event.preventDefault();
-                var topic = $(this).attr("hockey-data");
-                var topic = $("hockeyTopic-input").val().trim();
-                hockeyTopics.push(topic);
-                console.log("hockeyTopic" + topic);
-                renderButtons();
-        });
-
-        $(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
-
+        for (var i = 0; i < hockeyTopics.length; i++) {
+                var a = $("<button>");
+                a.addClass("hockeyTopic");
+                a.attr("hockey-data", hockeyTopics[i]);
+                a.text(hockeyTopics[i]);
+                $("#new-getHockeyTopic-buttons").append(a);
+                console.log("HockeyTopics: " + hockeyTopics[i])
+        }
 };
+
+//This function handle the buttons
+
+$("#add-hockeyTopics").on("click", function (event) {
+        event.preventDefault();
+        var topic = $(this).attr("hockey-data");
+        var topic = $("hockeyTopic-input").val().trim();
+        hockeyTopics.push(topic);
+        console.log("hockeyTopic" + topic);
+        renderButtons();
+});
+
+renderButtons();
 
 // Instructions
         //DONE // Before you can make any part of your site work, you need to
