@@ -27,67 +27,74 @@
 
   <!-- Row for Searching Giphy's -->
   <div class="row container text-center">
-    <div class="col">
+    <div class="col-lg-12">
       <br>
-      <!-- First card is for handling the search parameters -->
-      <div class="card">
-        <div class="card-header" style="background-color: #236192; color: white"><strong>
-            <i class="fa fa-list-alt text-center"></i> Search Parameters</strong>
+      
+      <!-- ******INPUTS******* --> 
+      <div class="card text-center">
+        
+        <div class="card-header" style="background-color: #236192; color: white"><strong><i class="fa fa-list-alt"></i> Search Parameters</strong>
         </div>
 
-
+        <!-- ******INPUTS*******-->
         <div class="card-body">
 
-          <!-- Here we create an HTML Form for handling the ******INPUTS*******-->
           <form role="form">
 
-            <!-- GIPHY SEARCH BOX -->
+            <!-- ******SEARCH*******-->
             <div class="form-group">
               <label for="search">Search:</label>
               <input type="text" class="form-control" id="giphy-input">
             </div>
-            <body></body>
-            <!-- GIPHY BUTTONS FROM TOPICS AND NEW BUTTONS -->
-            <div class="text-center" id="new-giphy-buttons" ></div>
 
+            <!--******ADDING BUTTONS*******-->
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-dark" id="new-giphy-buttons"><i class="fa fa-search"></i></button>
+                </div>
+
+            <!--******SUBMIT BUTTONS*******-->
             <div class="form-group">
+                <button type="submit" class="btn btn-secondary buttonSubmit" id="giphy-button">
+                <i class="fa fa-search"></i>Search</button>
 
-              <!-- SEARCH BUTTON-->
-
-              <button type="submit" class="btn btn-secondary" id="giphy-button" style="background-color: #236192; color: white">
-                <i class="fa fa-search"  ></i> Search</button>
           </form>
+
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- IMAGES WILL GO HERE -->
+  <!-- ******IMAGES******* -->
   <div class="container">
-    <div class="row">
-      <div class="col">
+    <div class="row justify-content-md-center">
+    
+      <div class="col-lg-12">
         <br>
-        <!-- THIS CARD IS THE STRUCTURE FOR IMAGES -->
+
+        <!--******IMAGE CONTAINER*******-->
         <div class="card">
-          <!-- card Heading to insert images box -->
-          <div class="card-header"style="background-color: #A2AAAD; color: white;">
-            <strong>
-              <i class="fa fa-table"></i> Images </strong>
+
+          <div class="card-header" style="background-color: #A2AAAD; color: white;"><strong><i class="fa fa-table"></i> Images </strong>
           </div>
+                        
+        <!-- ******IMAGES CARDS******* -->
+              <div class="card">
+                  <div class="row justify-content-md-center">
+                    <h5 class="card-title">Title</h5>
+                    <div><img class="car-img" id="images">Image</p></div>
+                        <p class="card-text" id="rating">Rating</h5>
+                
+                  </div>
+        
         </div>
-        <!-- style="width: 200px; height: 150px;" -->
-        <!-- THIS CARD HOLDS THE IMAGES -->
-        <div class="container">
-          <div class="row">
-            <div class="col card-body" id="images">Image</div>
-            <div class="col card-body" id="rating">Rating</div>
-            <div class="col card-body" id="title">Title</div>
-          </div>
-        </div>
+
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/giphy.js"></script>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/javascript/giphy.js"></script>
 
 </body>
 

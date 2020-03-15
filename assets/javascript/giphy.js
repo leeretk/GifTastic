@@ -80,6 +80,8 @@ $("#add-hockeyTopics").on("click", function (event) {
 
 renderButtons();
 
+
+
 // Instructions
         //DONE // Before you can make any part of your site work, you need to
 
