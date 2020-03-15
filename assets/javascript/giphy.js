@@ -1,7 +1,9 @@
 
-var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
+$(document).ready(function() {
 
-$("#getHockeyTopic-button").on("click", function () {
+        var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
+
+        $("#getHockeyTopic-button").on("click", function () {
         event.preventDefault();
 
         // This line will grab the text from the input box
@@ -10,9 +12,10 @@ $("#getHockeyTopic-button").on("click", function () {
         hockeyTopics.push(getHockeyTopic);
 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        hockeyTopics + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        hockeyTopics + "_hockey" + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-        // Perfoming an AJAX GET request to our queryURL
+
+       // Perfoming an AJAX GET request to our queryURL
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -31,52 +34,62 @@ $("#getHockeyTopic-button").on("click", function () {
                         getHockeyTopicImage.attr("alt", "getHockeyTopicimage");
                         //append images
                         console.log("image source applied")
+
+                        // $("#image-title-rating").prepend(" Title: " + title + getHockeyTopicImage + " Rating: " + rating );
+
                         $("#images").prepend(getHockeyTopicImage);
+        
+       
                         //$("images").hide().animate();
                         console.log("image was downloaded")
                         //turn off image animation 
                         //create toggle
                         //should we append to a DIV here so the image, rating and title show in the same container?
 
-                        //get rating from getHockeyTopic.com
+                        //get rating from giphy.com
                         var rating = response.data[i].rating;
                         $("#rating").text(JSON.stringify("Rating: " + rating));
-                        $("#rating").prepend(title);
-                        console.log("Rating: " + title)
+                        $("#rating").prepend(rating);
+                        console.log("Rating: " + rating)
 
-                        //get title from getHockeyTopic.com
+                        //get title from giphy.com
                         var title = response.data[i].title;
                         $("#title").text(JSON.stringify("Title: " + title));
                         $("#title").prepend(title);
                         console.log("Title: " + title)
-
-                        var state = $(this).attr("data-state");
-                           if (state === "still") {
-                          $(this).attr("src", $(this).attr("data-animate"));
-                          $(this).attr("data-state", "animate");
-                        } else {
-                          $(this).attr("src", $(this).attr("data-still"));
-                          $(this).attr("data-state", "still");
-                        }
-
+                        
                 };
+                renderButtons();
+        });
 
         });
-        //renderButtons();
+        
+        function renderButtons() {
+                $("#new-getHockeyTopic-buttons").empty();
+        
+               for (var i = 0; i < hockeyTopics.length; i++) {
+                      var a = $("<button>");
+                      a.addClass("hockeyTopic");
+                       a.attr("hockey-data", hockeyTopics[i]);
+                      a.text(hockeyTopics[i]);
+                       $("#new-getHockeyTopic-buttons").append(a);
+                     console.log("HockeyTopics: " + hockeyTopics[i])
+             }
+        };
+
 });
 
-// //*function renderButtons() {
-//         $("#new-getHockeyTopic-buttons").empty();
 
-//         for (var i = 0; i < hockeyTopics.length; i++) {
-//                 var a = $("<button>");
-//                 a.addClass("hockeyTopic");
-//                 a.attr("hockey-data", hockeyTopics[i]);
-//                 a.text(hockeyTopics[i]);
-//                 $("#new-getHockeyTopic-buttons").append(a);
-//                 console.log("HockeyTopics: " + hockeyTopics[i])
+
+// $("#data-still").on("click", function() {var state = $(getHockeyTopicImage).attr("data-state");
+// if (state === "still") {
+//         $(getHockeyTopicImage).attr("src", $(this).attr("data-animate"));
+//         $(getHockeyTopicImage).attr("data-state", "animate");
+// } else {
+//         $(getHockeyTopicImage).attr("src", $(this).attr("data-still"));
+//         $(getHockeyTopicImage).attr("data-state", "still");
 //         }
-// };
+
 
 // //This function handle the buttons
 
