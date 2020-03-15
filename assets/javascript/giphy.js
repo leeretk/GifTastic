@@ -1,9 +1,7 @@
 
-$(document).ready(function() {
+var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
 
-        var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
-
-        $("#getHockeyTopic-button").on("click", function () {
+$("#getHockeyTopic-button").on("click", function () {
         event.preventDefault();
 
         // This line will grab the text from the input box
@@ -12,7 +10,7 @@ $(document).ready(function() {
         hockeyTopics.push(getHockeyTopic);
 
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        hockeyTopics + "_hockey" + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        hockeyTopics + "_hockey_bloopers" + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
 
        // Perfoming an AJAX GET request to our queryURL
@@ -23,9 +21,9 @@ $(document).ready(function() {
         }).then(function (response) {
                 console.log("ajax was called")
                 console.log(response)
-                
+
                 for (i = 0; i < 10; i++) {
-                        //set image variables 
+                        //set image variables
                         var imageUrl = response.data[i].images.downsized_medium.url;
                         var getHockeyTopicImage = $("<img>");
                         console.log("Title: " + getHockeyTopicImage)
@@ -38,11 +36,11 @@ $(document).ready(function() {
                         // $("#image-title-rating").prepend(" Title: " + title + getHockeyTopicImage + " Rating: " + rating );
 
                         $("#images").prepend(getHockeyTopicImage);
-        
-       
+
+
                         //$("images").hide().animate();
                         console.log("image was downloaded")
-                        //turn off image animation 
+                        //turn off image animation
                         //create toggle
                         //should we append to a DIV here so the image, rating and title show in the same container?
 
@@ -57,31 +55,34 @@ $(document).ready(function() {
                         $("#title").text(JSON.stringify("Title: " + title));
                         $("#title").prepend(title);
                         console.log("Title: " + title)
-                        
                 };
                 renderButtons();
         });
-
-        });
-        
-        function renderButtons() {
-                $("#new-getHockeyTopic-buttons").empty();
-        
-               for (var i = 0; i < hockeyTopics.length; i++) {
-                      var a = $("<button>");
-                      a.addClass("hockeyTopic");
-                       a.attr("hockey-data", hockeyTopics[i]);
-                      a.text(hockeyTopics[i]);
-                       $("#new-getHockeyTopic-buttons").append(a);
-                     console.log("HockeyTopics: " + hockeyTopics[i])
-             }
-        };
-
 });
+
+function renderButtons() {
+        $("#new-getHockeyTopic-buttons").empty();
+
+       for (var i = 0; i < hockeyTopics.length; i++) {
+              var a = $("<button>");
+              a.addClass("hockeyTopic");
+               a.attr("hockey-data", hockeyTopics[i]);
+              a.text(hockeyTopics[i]);
+               $("#new-getHockeyTopic-buttons").append(a);
+             console.log("HockeyTopics: " + hockeyTopics[i])
+        }
+};
+renderButtons();
+
+
+
+
+
 
 
 
 // $("#data-still").on("click", function() {var state = $(getHockeyTopicImage).attr("data-state");
+
 // if (state === "still") {
 //         $(getHockeyTopicImage).attr("src", $(this).attr("data-animate"));
 //         $(getHockeyTopicImage).attr("data-state", "animate");
@@ -102,7 +103,7 @@ $(document).ready(function() {
 //         renderButtons();
 // });
 
-// $(document).on("click", 
+// $(document).on("click",
 //         $("#add-hockeyTopics"),
 //         $("#getHockeyTopic-button")
 // );
