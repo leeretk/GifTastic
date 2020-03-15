@@ -9,7 +9,8 @@ $("#getHockeyTopic-button").on("click", function () {
 
         hockeyTopics.push(getHockeyTopic);
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + +getHockeyTopic +"&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        hockeyTopics + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
         // Perfoming an AJAX GET request to our queryURL
         $.ajax({
@@ -48,6 +49,16 @@ $("#getHockeyTopic-button").on("click", function () {
                         $("#title").text(JSON.stringify("Title: " + title));
                         $("#title").prepend(title);
                         console.log("Title: " + title)
+
+                        var state = $(this).attr("data-state");
+                           if (state === "still") {
+                          $(this).attr("src", $(this).attr("data-animate"));
+                          $(this).attr("data-state", "animate");
+                        } else {
+                          $(this).attr("src", $(this).attr("data-still"));
+                          $(this).attr("data-state", "still");
+                        }
+
                 };
 
         });
