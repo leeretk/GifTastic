@@ -49,7 +49,6 @@ $("#getHockeyTopic-button").on("click", function () {
                         console.log("Title: " + title)
                 };
 
-                //$(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
         });
         renderButtons();
 });
@@ -66,17 +65,18 @@ function renderButtons() {
                 console.log("HockeyTopics: " + hockeyTopics[i])
         }
 };
+                //$(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
 
 //This function handle the buttons
 
-$("#add-hockeyTopics").on("click", function (event) {
-        event.preventDefault();
-        var topic = $(this).attr("hockey-data");
-        var topic = $("hockeyTopic-input").val().trim();
-        hockeyTopics.push(topic);
-        console.log("hockeyTopic" + topic);
-        renderButtons();
-});
+// $("#add-hockeyTopics").on("click", function (event) {
+//         event.preventDefault();
+//         var topic = $(this).attr("hockey-data");
+//         var topic = $("hockeyTopic-input").val().trim();
+//         hockeyTopics.push(topic);
+//         console.log("hockeyTopic" + topic);
+//         renderButtons();
+// });
 
 renderButtons();
 
