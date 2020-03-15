@@ -7,11 +7,11 @@ header {
 .imgContainer {
     margin-left: 50px;
     margin-right: 20px;
-    max-width: 1060px
+    max-width: 768px
 }
 
 img {
-    border: red;
+    border:#236192;
     padding: 10px;
     height: 200px;
     width: 200px;

@@ -20,7 +20,11 @@ $("#getHockeyTopic-button").on("click", function () {
                 console.log(response)
 
                 for (i = 0; i < 10; i++) {
-                        //get image from giphy.com
+                        //add counter so you can get 10 different images each time. 
+                        //add a random number generating and add 10 // do something here
+                        //so you can change the sequence of i.
+
+                        //get image from getHockeyTopic.com
                         var imageUrl = response.data[i].images.preview_gif.url;
                         var getHockeyTopicImage = $("<img>");
                         //create getHockeyTopic attribute
@@ -44,37 +48,37 @@ $("#getHockeyTopic-button").on("click", function () {
                         $("#title").prepend(title);
                         console.log("Title: " + title)
                 };
-                //renderButtons();
-                
+
+                //$(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
         });
-       
+        renderButtons();
 });
 
-// function renderButtons() {
-//         $("#new-getHockeyTopic-buttons").empty();
+function renderButtons() {
+        $("#new-getHockeyTopic-buttons").empty();
 
-//         for (var i = 0; i < hockeyTopics.length; i++) {
-//                 var a = $("<button>");
-//                 a.addClass("hockeyTopic");
-//                 a.attr("hockey-data", hockeyTopics[i]);
-//                 a.text(hockeyTopics[i]);
-//                 $("#new-getHockeyTopic-buttons").append(a);
-//                 console.log("HockeyTopics: " + hockeyTopics[i])
-//         }
-// };
-// renderButtons();
+        for (var i = 0; i < hockeyTopics.length; i++) {
+                var a = $("<button>");
+                a.addClass("hockeyTopic");
+                a.attr("hockey-data", hockeyTopics[i]);
+                a.text(hockeyTopics[i]);
+                $("#new-getHockeyTopic-buttons").append(a);
+                console.log("HockeyTopics: " + hockeyTopics[i])
+        }
+};
 
 //This function handle the buttons
 
-// $("#add-hockeyTopics").on("click", function (event) {
-//         event.preventDefault();
-//         var topic = $("hockeyTopic-input").val().trim();
-//         hockeyTopics.push(topic);
-//         $("#images").prepend(getHockeyTopicImage);
-//         console.log("hockeyTopic" + topic);
-//         $(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
-// });
+$("#add-hockeyTopics").on("click", function (event) {
+        event.preventDefault();
+        var topic = $(this).attr("hockey-data");
+        var topic = $("hockeyTopic-input").val().trim();
+        hockeyTopics.push(topic);
+        console.log("hockeyTopic" + topic);
+        renderButtons();
+});
 
+renderButtons();
 
 // Instructions
         //DONE // Before you can make any part of your site work, you need to
