@@ -32,18 +32,9 @@ $("#getHockeyTopic-button").on("click", function () {
                         getHockeyTopicImage.attr("alt", "getHockeyTopicimage");
                         //append images
                         console.log("image source applied")
-
                         // $("#image-title-rating").prepend(" Title: " + title + getHockeyTopicImage + " Rating: " + rating );
-
                         $("#images").prepend(getHockeyTopicImage);
-
-
-                        //$("images").hide().animate();
                         console.log("image was downloaded")
-                        //turn off image animation
-                        //create toggle
-                        //should we append to a DIV here so the image, rating and title show in the same container?
-
                         //get rating from giphy.com
                         var rating = response.data[i].rating;
                         $("#rating").text(JSON.stringify("Rating: " + rating));
@@ -58,6 +49,16 @@ $("#getHockeyTopic-button").on("click", function () {
                 };
                 renderButtons();
         });
+
+$("#add-hockeyTopics").on("click", function (event) {
+event.preventDefault();
+var topic = $(this).attr("hockey-data");
+var topic = $("hockeyTopic-input").val().trim();
+hockeyTopics.push(topic);
+console.log("hockeyTopic" + topic);
+renderButtons();
+});
+
 });
 
 function renderButtons() {
@@ -77,6 +78,10 @@ renderButtons();
 
 
 
+                        //turn off image animation
+                        //create toggle
+                        //should we append to a DIV here so the image, rating and title show in the same container?
+
 
 
 
@@ -94,14 +99,7 @@ renderButtons();
 
 // //This function handle the buttons
 
-// $("#add-hockeyTopics").on("click", function (event) {
-//         event.preventDefault();
-//         var topic = $(this).attr("hockey-data");
-//         var topic = $("hockeyTopic-input").val().trim();
-//         hockeyTopics.push(topic);
-//         console.log("hockeyTopic" + topic);
-//         renderButtons();
-// });
+
 
 // $(document).on("click",
 //         $("#add-hockeyTopics"),
