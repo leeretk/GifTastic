@@ -9,7 +9,7 @@ $("#getHockeyTopic-button").on("click", function () {
 
         hockeyTopics.push(getHockeyTopic);
 
-        var queryURL = "https://api.getHockeyTopic.com/v1/gifs/search?q=" + getHockeyTopic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + +getHockeyTopic +"&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9";
 
         // Perfoming an AJAX GET request to our queryURL
         $.ajax({
@@ -17,21 +17,22 @@ $("#getHockeyTopic-button").on("click", function () {
                 method: "GET"
                 //after the data comes back... then do something
         }).then(function (response) {
+                console.log("ajax was called")
                 console.log(response)
-
+                
                 for (i = 0; i < 10; i++) {
-                        //add counter so you can get 10 different images each time. 
-                        //add a random number generating and add 10 // do something here
-                        //so you can change the sequence of i.
-
-                        //get image from getHockeyTopic.com
-                        var imageUrl = response.data[i].images.preview_gif.url;
+                        //set image variables 
+                        var imageUrl = response.data[i].images.downsized_medium.url;
                         var getHockeyTopicImage = $("<img>");
+                        console.log("Title: " + getHockeyTopicImage)
                         //create getHockeyTopic attribute
                         getHockeyTopicImage.attr("src", imageUrl);
-                        getHockeyTopicImage.attr("alt", "getHockeyTopic image");
+                        getHockeyTopicImage.attr("alt", "getHockeyTopicimage");
                         //append images
+                        console.log("image source applied")
                         $("#images").prepend(getHockeyTopicImage);
+                        //$("images").hide().animate();
+                        console.log("image was downloaded")
                         //turn off image animation 
                         //create toggle
                         //should we append to a DIV here so the image, rating and title show in the same container?
@@ -50,24 +51,23 @@ $("#getHockeyTopic-button").on("click", function () {
                 };
 
         });
-        renderButtons();
+        //renderButtons();
 });
 
-function renderButtons() {
-        $("#new-getHockeyTopic-buttons").empty();
+// //*function renderButtons() {
+//         $("#new-getHockeyTopic-buttons").empty();
 
-        for (var i = 0; i < hockeyTopics.length; i++) {
-                var a = $("<button>");
-                a.addClass("hockeyTopic");
-                a.attr("hockey-data", hockeyTopics[i]);
-                a.text(hockeyTopics[i]);
-                $("#new-getHockeyTopic-buttons").append(a);
-                console.log("HockeyTopics: " + hockeyTopics[i])
-        }
-};
-                //$(document).on("click", ".hockeyTopic", displaygetHockeyTopic);
+//         for (var i = 0; i < hockeyTopics.length; i++) {
+//                 var a = $("<button>");
+//                 a.addClass("hockeyTopic");
+//                 a.attr("hockey-data", hockeyTopics[i]);
+//                 a.text(hockeyTopics[i]);
+//                 $("#new-getHockeyTopic-buttons").append(a);
+//                 console.log("HockeyTopics: " + hockeyTopics[i])
+//         }
+// };
 
-//This function handle the buttons
+// //This function handle the buttons
 
 // $("#add-hockeyTopics").on("click", function (event) {
 //         event.preventDefault();
@@ -78,7 +78,13 @@ function renderButtons() {
 //         renderButtons();
 // });
 
-renderButtons();
+// $(document).on("click", 
+//         $("#add-hockeyTopics"),
+//         $("#getHockeyTopic-button")
+// );
+
+
+
 
 
 
