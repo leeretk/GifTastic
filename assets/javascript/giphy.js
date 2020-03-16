@@ -96,7 +96,7 @@ renderButtons();
 
 //DONE// Try using a loop that appends a button for each string in the array.
 
-//COULD NOT GET THIS TO WORK// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the getHockeyTopic API and place them on the page.
+//DONE// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the getHockeyTopic API and place them on the page.
 
 //COULD NOT GET THIS TO WORK// When the user clicks one of the still getHockeyTopic images, the gif should animate. If the user clicks the gif again, it should stop playing.
 
