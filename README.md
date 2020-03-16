@@ -1,6 +1,6 @@
 # GifTastic
 
-This game will allow you search on a topic and get 10 still images related to that search. 
+This game has a hockey theme and will allow you search on other topics to get 10 still images related to that search. 
 
 //COMPLETED//
 
