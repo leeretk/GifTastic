@@ -1,7 +1,7 @@
 
-var hockeyTopics = ["icehockey", "toedrag", "stickhandling", "puckhandling", "amazingplays", "gretksy",];
+var hockeyTopics = ["icehockey", "toedrag", "gabriellandeskog", "puckhandling", "nathanmackinnon", "gretksy","ryangraves"];
 
-$("#getHockeyTopic-button").on("click", function getTopics() {
+$("#getHockeyTopic-button").on("click", function () {
         event.preventDefault();
 
         // This line will grab the text from the input box
@@ -69,9 +69,9 @@ function renderButtons() {
 };
 renderButtons();
 
-$(document).on("click", ".hockeyTopic", getTopics)
+// $(document).on("click", ".hockeyTopic", getHockeyTopic-button)
 
-renderButtons();
+// renderButtons();
 
 //$("#data-still").on("click", function() {var state = $(getHockeyTopicImage).attr("data-state");
 
@@ -85,11 +85,6 @@ renderButtons();
 //                 $(getHockeyTopicImage).attr("src", $(this).attr("data-still"));
 //          $(getHockeyTopicImage).attr("data-state", "still");
 // };
-
-
-
-
-
 
 // Instructions
 
