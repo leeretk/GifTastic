@@ -1,6 +1,49 @@
 
-var hockeyTopics = ["icehockey", "toedrag", "gabriellandeskog", "puckhandling", "nathanmackinnon", "gretksy","ryangraves"];
+var hockeyTopics = ["icehockey", "toedrag", "gabriellandeskog", "puckhandling", "nathanmackinnon", "gretksy", "ryangraves"];
 
+function getGifs(topic) {
+
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                topic + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+        $.ajax({
+                url: queryURL,
+                method: "GET"
+        }).then(function (response) {
+                console.log("ajax was called")
+                console.log(response)
+
+                for (i = 0; i < 10; i++) {
+                        var imageUrl = response.data[i].images.fixed_height_still.url;
+                        var getHockeyTopicImage = $("<img>");
+                        console.log("Title: " + getHockeyTopicImage)
+                        getHockeyTopicImage.attr("src", imageUrl);
+                        getHockeyTopicImage.attr("alt", "getHockeyTopicimage");
+                        console.log("image source applied")
+                        $("#images").prepend(getHockeyTopicImage);
+                        console.log("image was downloaded")
+                        var rating = response.data[i].rating;
+                        $("#rating").text(JSON.stringify(rating));
+                        $("#rating").prepend(rating);
+                        console.log("Rating: " + rating)
+                        var title = response.data[i].title;
+                        $("#title").text(JSON.stringify(title));
+                        $("#title").prepend(title);
+                        console.log("Title: " + title)
+                };
+        });
+}
+
+
+$(document).on("click", ".hockeyTopic", function() {
+        console.log("on click document working")
+        console.log($(this).data("hockey"));
+        var getHockeyTopic = $(this).data("hockey")
+        getGifs(getHockeyTopic);
+});
+
+
+//ADD A NEW TOPIC FROM THE SEARCH FIELD
 $("#getHockeyTopic-button").on("click", function () {
         event.preventDefault();
 
@@ -8,63 +51,37 @@ $("#getHockeyTopic-button").on("click", function () {
         var getHockeyTopic = $("#getHockeyTopic-input").val().trim();
 
         hockeyTopics.push(getHockeyTopic);
-
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        hockeyTopics + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-
-
-       // Perfoming an AJAX GET request to our queryURL
-        $.ajax({
-                url: queryURL,
-                method: "GET"
-                //after the data comes back... then do something
-        }).then(function (response) {
-                console.log("ajax was called")
-                console.log(response)
-
-                for (i = 0; i < 10; i++) {
-                        //set image variables
-                        var imageUrl = response.data[i].images.fixed_height_still.url;
-                        var getHockeyTopicImage = $("<img>");
-                        console.log("Title: " + getHockeyTopicImage)
-                        //create getHockeyTopic attribute
-                        getHockeyTopicImage.attr("src", imageUrl);
-                        getHockeyTopicImage.attr("alt", "getHockeyTopicimage");
-                        //append images
-                        console.log("image source applied")
-                        // $("#image-title-rating").prepend(" Title: " + title + getHockeyTopicImage + " Rating: " + rating );
-                        $("#images").prepend(getHockeyTopicImage);
-                        console.log("image was downloaded")
-
-                        //get rating from giphy.com
-                        var rating = response.data[i].rating;
-                        $("#rating").text(JSON.stringify(rating));
-                        $("#rating").prepend(rating);
-                        console.log("Rating: " + rating)
-
-                        //get title from giphy.com
-                        var title = response.data[i].title;
-                        $("#title").text(JSON.stringify(title));
-                        $("#title").prepend(title);
-                        console.log("Title: " + title)
-                };
-                
-        });
+        getGifs(getHockeyTopic);
         renderButtons();
-
 });
 
+//ADD A NEW TOPIC FROM THE SEARCH FIELD
+// $(".hockeyTopic").on("click", function () {
+//         event.preventDefault();
+
+function existingButtonClick() {
+        console.log("get hockey topic event ")
+        // This line will grab the text from the input box
+        // console.log(this);
+        // console.log($(this));
+
+        // var getHockeyTopic = $(this).data("hockey").val().trim();
+        // getGifs(getHockeyTopic);
+
+};
+
 function renderButtons() {
-        
+
         $("#new-getHockeyTopic-buttons").empty();
 
-       for (var i = 0; i < hockeyTopics.length; i++) {
-              var a = $("<button>");
-              a.addClass("hockeyTopic");
-              a.attr("hockey-data", hockeyTopics[i]);
-              a.text(hockeyTopics[i]);
-             $("#new-getHockeyTopic-buttons").append(a);
-             console.log("HockeyTopics: " + hockeyTopics[i])
+        for (var i = 0; i < hockeyTopics.length; i++) {
+                var a = $("<button>");
+                a.addClass("hockeyTopic");
+                a.attr("data-hockey", hockeyTopics[i]);
+                a.text(hockeyTopics[i]);
+                a.attr("onClick", existingButtonClick);
+                $("#new-getHockeyTopic-buttons").append(a);
+                console.log("HockeyTopics: " + hockeyTopics[i])
         }
 };
 renderButtons();
@@ -76,12 +93,12 @@ renderButtons();
 //$("#data-still").on("click", function() {var state = $(getHockeyTopicImage).attr("data-state");
 
 //         if (state === "still") {
-        
+
 //          $(getHockeyTopicImage).attr("src", $(this).attr("data-animate"));
 //          $(getHockeyTopicImage).attr("data-state", "animate");
-         
+
 //         } else {
-         
+
 //                 $(getHockeyTopicImage).attr("src", $(this).attr("data-still"));
 //          $(getHockeyTopicImage).attr("data-state", "still");
 // };
