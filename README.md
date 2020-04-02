@@ -2,7 +2,7 @@
 https://leeretk.github.io/GifTastic/
 
 
-![] C:\Users\Kamy\Employer-Ready-Profile\assets\images\isn't_that_giftastic_img.jpg
+![](https://github.com/leeretk/Employer-Ready-Profile/blob/master/assets/images/isnt_that_giftastic_img.jpg)
 
 # What is it? 
 
